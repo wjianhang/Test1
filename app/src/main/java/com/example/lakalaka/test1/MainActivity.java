@@ -1,5 +1,6 @@
 package com.example.lakalaka.test1;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -10,10 +11,10 @@ import android.widget.RadioGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import fragment.Fragment_project;
 import fragment.Fragment_articles;
 import fragment.Fragment_dynamic;
 import fragment.Fragment_mine;
+import fragment.Fragment_project;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener,ViewPager.OnPageChangeListener{
 
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        StatusBarCompat.compat(this,Color.RED);
+
+
+
 
         mFragmentList=new ArrayList<Fragment>();
         mFragmentList.add(new Fragment_project());

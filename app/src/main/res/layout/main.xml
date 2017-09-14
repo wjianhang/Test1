@@ -9,6 +9,7 @@
         android:layout_height="wrap_content">
     </android.support.v4.view.ViewPager>
     <RadioGroup
+        android:background="@android:color/white"
         android:id="@+id/radiogroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

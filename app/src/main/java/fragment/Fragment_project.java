@@ -15,14 +15,18 @@ import com.example.lakalaka.test1.R;
  */
 
 public class Fragment_project extends Fragment{
+
     public Fragment_project(){
+
 
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+
         View view=inflater.inflate(R.layout.fragment_project,container,false);
         return view;
+
     }
 }
