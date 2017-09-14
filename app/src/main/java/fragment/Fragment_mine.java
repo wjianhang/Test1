@@ -31,7 +31,7 @@ public class Fragment_mine extends Fragment {
 
         mcontext= this.getContext();
 
-        //mob 注册
+        //mob 注册  第三方
         but_test = (Button) view.findViewById(R.id.btn_Register);
         but_test.setOnClickListener(new View.OnClickListener() {
             @Override
