@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v4.view.ViewPager>
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/first"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_projects_selector"
+            android:gravity="center_horizontal"
+            android:text="@string/projects"
+            android:textColor="@drawable/tab_text_color_selector"
+            />
+
+
+        <RadioButton
+            android:id="@+id/second"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_atricle_selector"
+            android:gravity="center_horizontal"
+            android:text="@string/atricle"
+            android:textColor="@drawable/tab_text_color_selector"
+            />
+
+
+        <RadioButton
+            android:id="@+id/thrid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_dynamics_selector"
+            android:gravity="center_horizontal"
+            android:text="@string/dynamics"
+            android:textColor="@drawable/tab_text_color_selector"
+            />
+
+        <RadioButton
+            android:id="@+id/fourth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_mine_selector"
+            android:gravity="center_horizontal"
+            android:text="@string/mine"
+            android:textColor="@drawable/tab_text_color_selector"
+            />
+
+    </RadioGroup>
+
+
+
+
+</RelativeLayout>
