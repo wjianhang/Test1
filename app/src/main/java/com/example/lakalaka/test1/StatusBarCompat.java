@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * Created by lakalaka on 2017/9/14/0014.
@@ -33,7 +31,7 @@ public class StatusBarCompat {
             return;
         }
 
-        //当前手机版本为4.4
+     /*   //当前手机版本为4.4
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
         {
             int color = COLOR_DEFAULT;
@@ -48,7 +46,7 @@ public class StatusBarCompat {
             statusBarView.setBackgroundColor(color);
             contentView.addView(statusBarView, lp);
         }
-
+*/
     }
 
     public static void compat(Activity activity)

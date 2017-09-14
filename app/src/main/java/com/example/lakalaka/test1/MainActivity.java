@@ -7,10 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.smssdk.EventHandler;
+import cn.smssdk.SMSSDK;
 import fragment.Fragment_articles;
 import fragment.Fragment_dynamic;
 import fragment.Fragment_mine;
@@ -34,11 +37,29 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        // 如果希望在读取通信录的时候提示用户，可以添加下面的代码，并且必须在其他代码调用之前，否则不起作用；如果没这个需求，可以不加这行代码
+        //SMSSDK.setAskPermisionOnReadContact(boolShowInDialog)
 
-        StatusBarCompat.compat(this,Color.RED);
+        // 创建EventHandler对象
+        EventHandler eventHandler = new EventHandler() {
+            public void afterEvent(int event, int result, Object data) {
+                if (data instanceof Throwable) {
+                    Throwable throwable = (Throwable) data;
+                    String msg = throwable.getMessage();
+                    Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                } else {
+                    if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
+                        // 处理你自己的逻辑
+                    }
+                }
+            }
+        };
+
+        // 注册监听器
+        SMSSDK.registerEventHandler(eventHandler);
 
 
-
+        StatusBarCompat.compat(this, Color.RED);  //沉浸状态栏
 
         mFragmentList=new ArrayList<Fragment>();
         mFragmentList.add(new Fragment_project());

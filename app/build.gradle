@@ -19,11 +19,11 @@ android {
     }
 }
 //第三方mob 注册发送短信 sdk
-/*repositories{
+repositories{
     flatDir{
         dirs 'libs' //就是你放aar的目录地址
     }
-}*/
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -32,8 +32,8 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-   /* compile name:'SMSSDK-<version>',ext:'aar'     ---
-    compile name:'SMSSDKGUI-<version>',ext:'aar'*/
+    compile name:'SMSSDK-3.0.0',ext:'aar'
+    compile name:'SMSSDKGUI-3.0.0',ext:'aar'
     testCompile 'junit:junit:4.12'
 
 }
