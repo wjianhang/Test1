@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-
-
-
         mFragmentList=new ArrayList<Fragment>();
         mFragmentList.add(new Fragment_project());
         mFragmentList.add(new Fragment_articles());
@@ -54,10 +51,11 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         madpter=new MyFragmentPagerAdapter(getSupportFragmentManager(),mFragmentList);
         vpager= (ViewPager) findViewById(R.id.viewpager);
-        vpager.setAdapter(madpter);
-        vpager.setCurrentItem(0);
-        vpager.addOnPageChangeListener(this);
-        vpager.setOffscreenPageLimit(4);
+
+        vpager.setAdapter(madpter);              //设置一个PagerAdapter
+        vpager.setCurrentItem(0);                //设置当前选中的页面  与上面定义整形变量相对应
+        vpager.addOnPageChangeListener(this);    //传入一个ViewPager.SimpleOnPageChangeListener对象
+        vpager.setOffscreenPageLimit(4);         //页面数
     }
 
 
@@ -96,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
  @Override
     public void onPageScrollStateChanged(int state) {
-        if(state==ViewPager.SCROLL_STATE_SETTLING){
+        if(state==2){                            //state的过程一共三个  0:开始滑动  1:正在滑动   2:滑动完毕
             switch (vpager.getCurrentItem())
             {
                 case PAGE_ONE:
