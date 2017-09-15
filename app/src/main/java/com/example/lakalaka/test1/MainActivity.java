@@ -12,9 +12,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import fragment.Fragment_articles;
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         // 注册监听器
         SMSSDK.registerEventHandler(eventHandler);
 
-        Bmob.initialize(this, "82a542cbad55f514667a516a51da7045");
+        /*Bmob.initialize(this, "82a542cbad55f514667a516a51da7045");
 
         Person p2 = new Person();
         p2.setName("123");
@@ -75,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                     Toast.makeText(getApplication(), "创建数据失败：" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
 
 
         StatusBarCompat.compat(this, Color.RED);  //沉浸状态栏

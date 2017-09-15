@@ -1,6 +1,7 @@
 package fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import com.example.lakalaka.test1.R;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import cn.smssdk.gui.RegisterPage;
+import ui.login_page;
 
 /**
  * Created by lakalaka on 2017/9/13/0013.
@@ -21,19 +23,22 @@ import cn.smssdk.gui.RegisterPage;
 
 public class Fragment_mine extends Fragment {
 
-    private Button but_test;
+    private Button btn_register;
+    private Button btn_login;
 
     private Context mcontext;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mine, container, false);
 
-        mcontext= this.getContext();
+        mcontext = this.getContext();
 
         //mob 注册  第三方
-        but_test = (Button) view.findViewById(R.id.btn_Register);
-        but_test.setOnClickListener(new View.OnClickListener() {
+        btn_register = (Button) view.findViewById(R.id.btn_Register);
+        btn_login = (Button) view.findViewById(R.id.btn_login);
+        btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -55,10 +60,17 @@ public class Fragment_mine extends Fragment {
                 });
 
                 registerPage.show(mcontext);
-
+            }
+        });
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(mcontext, login_page.class);
+                startActivity(i);
 
             }
         });
+
         return view;
     }
 }
