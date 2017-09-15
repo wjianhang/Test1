@@ -10,6 +10,7 @@ import com.example.lakalaka.test1.R;
 
 /**
  * Created by lakalaka on 2017/9/15/0015.
+ *
  */
 
 public class login_page extends Activity implements View.OnClickListener{
