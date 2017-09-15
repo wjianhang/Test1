@@ -45,6 +45,7 @@ public class Fragment_mine extends Fragment {
                         if (result == SMSSDK.RESULT_COMPLETE) {
                             //提交验证码成功
                             if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
+
                             }
                             //提交验证码成功，此时已经验证成功了
                             else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
