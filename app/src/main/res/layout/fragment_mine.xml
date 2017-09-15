@@ -29,10 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="注册测试"/>
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 
 
 
