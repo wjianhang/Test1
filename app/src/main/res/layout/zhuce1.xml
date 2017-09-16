@@ -65,6 +65,8 @@
             android:textColor="@color/tomato" />
 
         <EditText
+            android:maxLength="11"
+            android:id="@+id/edt_send"
             android:paddingLeft="15dp"
             android:background="@null"
             android:layout_width="match_parent"
@@ -74,13 +76,14 @@
 
     </LinearLayout>
     <Button
+        android:id="@+id/btn_send"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/btn_selector"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:text="注册"
+        android:text="获取验证码"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
