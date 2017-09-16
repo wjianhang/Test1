@@ -6,7 +6,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="#ff0000"
+    android:background="@color/tomato"
     >
     <TextView
         android:textColor="@android:color/white"

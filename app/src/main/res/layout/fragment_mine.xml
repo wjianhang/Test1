@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ff0000"
+        android:background="@color/tomato"
         >
         <TextView
             android:textColor="@android:color/white"
@@ -32,10 +32,10 @@
         android:layout_height="wrap_content" />
     <Button
         android:layout_gravity="center"
-        android:id="@+id/btn_Register"
+        android:id="@+id/btn_test2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="注册测试"/>
+        android:text="测试"/>
 
 
     </LinearLayout>

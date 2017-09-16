@@ -1,6 +1,5 @@
 package com.example.lakalaka.test1;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         });*/
 
 
-        StatusBarCompat.compat(this, Color.RED);  //沉浸状态栏
+        StatusBarCompat.compat(this, 0xFFFF6347);  //沉浸状态栏
 
         mFragmentList=new ArrayList<Fragment>();
         mFragmentList.add(new Fragment_project());
