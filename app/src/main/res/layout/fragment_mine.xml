@@ -28,7 +28,7 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_gravity="center"
-        android:background="@drawable/orange_se"
+        android:background="@drawable/btn_selector"
         android:textColor="@color/white"
         android:text="登录"
         android:layout_width="wrap_content"
@@ -36,9 +36,9 @@
         android:layout_height="wrap_content" />
     <Button
         android:layout_gravity="center"
-        android:id="@+id/btn_Register"
+        android:id="@+id/btn_test2"
         android:textColor="@color/white"
-        android:background="@drawable/orange_se"
+        android:background="@drawable/btn_selector"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
