@@ -7,86 +7,63 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/tomato"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                />
-            <TextView
+        android:layout_height="55dp"
+        android:background="@color/tomato">
+        
+        <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:text="登   录"
-                android:textSize="20sp"
-                 />
+                android:textSize="20sp" />
+       
+    </RelativeLayout>
 
-        </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textColor="@android:color/white"
-            android:text="——————————————————————————————————"/>
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </ScrollView>
+   
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
         <EditText
             android:id="@+id/editText1"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
+            android:layout_height="55dp"
             android:background="@drawable/edit"
             android:hint="手机号/用户名"
             android:singleLine="true" />
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2"/>
+                android:layout_height="10dp"
+                />
 
         <EditText
             android:id="@+id/editText2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
+            android:layout_height="55dp"
             android:background="@drawable/edit"
             android:inputType="textPassword"
             android:hint="请输入密码"
             android:singleLine="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="0.5"
+            android:layout_height="40dp"
             android:orientation="horizontal">
 
             <TextView
@@ -106,14 +83,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:id="@+id/denglu"
+                android:id="@+id/sign"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
@@ -125,10 +101,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

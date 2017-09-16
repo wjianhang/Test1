@@ -69,6 +69,7 @@
         android:background="@drawable/btn_selector"
         android:text="下一步"
         android:textColor="@color/white"
+
         android:textSize="18sp" />
 
 
