@@ -11,21 +11,23 @@ import static cn.smssdk.utils.a.e;
  */
 
 public class User_information extends BmobObject {
-    private String name;
-    private String password;
+    private String user_name;
+    private String user_password;
 
-    public String getName() {
-        return name;
-    }
+
+    public String getName(){return user_name;}
     public void setName(String name) {
-        this.name = name;
+        this.user_name = name;
     }
     public String getPassword() {
-        return password;
+        return user_password;
     }
     public void setPassword(String password) {
-        this.password = password;
+        this.user_password = password;
     }
+
+
+
 }
 
 

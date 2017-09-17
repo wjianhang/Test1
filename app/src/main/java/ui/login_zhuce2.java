@@ -19,14 +19,7 @@ public class login_zhuce2 extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zhuce2);
-        btn_next= (Button) findViewById(R.id.next);
-        btn_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(login_zhuce2.this,login_zhuce3.class);
-                startActivity(i);
-            }
-        });
+
 
     }
 }
