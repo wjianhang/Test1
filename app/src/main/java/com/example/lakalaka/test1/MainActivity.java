@@ -11,6 +11,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.QueryListener;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import fragment.Fragment_articles;
@@ -72,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                 }
             }
         });*/
+
+
+
 
 
         StatusBarCompat.compat(this, 0xFFFF6347);  //沉浸状态栏

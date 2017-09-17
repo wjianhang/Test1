@@ -36,26 +36,50 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:text="用户名"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:textColor="@color/tomato" />
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/edit_user_name"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/edit"
             android:hint="手机号/用户名"
             android:singleLine="true" />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 />
 
-        <EditText
-            android:id="@+id/editText2"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:text="密   码"
+                android:background="@color/white"
+                android:gravity="center"
+                android:textColor="@color/tomato" />
+            <EditText
+            android:id="@+id/edit_user_password"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/edit"
             android:inputType="textPassword"
             android:hint="请输入密码"
             android:singleLine="true" />
+        </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
