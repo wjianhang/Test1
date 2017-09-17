@@ -2,7 +2,6 @@ package ui;
 
 import android.app.Activity;
 import android.app.DownloadManager;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lakalaka.test1.R;
-import com.example.lakalaka.test1.StatusBarCompat;
 import com.example.lakalaka.test1.User_information;
 
 import java.util.List;
@@ -24,7 +22,7 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import fragment.Fragment_mine;
+
 
 
 /**
@@ -84,7 +82,7 @@ public class login_page extends Activity{
         password= (EditText) findViewById(R.id.edit_user_password);
         btn_sign= (Button) findViewById(R.id.sign);
 
-        StatusBarCompat.compat(this, 0xFFFF6347);  //沉浸状态栏
+
 
         Bmob.initialize(this,"82a542cbad55f514667a516a51da7045");
         btn_sign.setOnClickListener(new View.OnClickListener() {
@@ -103,23 +101,14 @@ public class login_page extends Activity{
                     @Override
                     public void done(List<User_information> list, BmobException e) {
                         if(e==null){
-
-                            toast("45");
                             String gname=list.get(0).getName().toString();
                             String gpassword=list.get(0).getPassword().toString();
-
-
-                            String name=username.getText().toString();
-                            String pswd=password.getText().toString();
-                            Toast.makeText(mcontext, gname, Toast.LENGTH_LONG).show();
                             if(gname.equals(usernm)&&gpassword.equals(userpwd))
                             {
                                 Intent seccess = new Intent();
-                                seccess.setClass(mcontext, Fragment_mine.class);
+                                seccess.setClass(mcontext, login_zhuce.class);
                                 startActivity(seccess);
                             }
-
-
                         }
                         else{
                             Toast.makeText(mcontext, "帐号或密码有误", Toast.LENGTH_LONG).show();
