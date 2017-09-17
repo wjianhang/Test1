@@ -10,9 +10,9 @@ import static cn.smssdk.utils.a.e;
  * Created by lu17852172914 on 2017/9/15.
  */
 
-public class Person extends BmobObject {
+public class User_information extends BmobObject {
     private String name;
-    private String address;
+    private String password;
 
     public String getName() {
         return name;
@@ -20,11 +20,13 @@ public class Person extends BmobObject {
     public void setName(String name) {
         this.name = name;
     }
-    public String getAddress() {
-        return address;
+    public String getPassword() {
+        return password;
     }
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
+
+
 

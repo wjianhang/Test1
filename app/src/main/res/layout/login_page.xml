@@ -34,22 +34,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/ceshi1"
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/edit"
             android:hint="手机号/用户名"
             android:singleLine="true" />
             <TextView
+                android:id="@+id/ceshi"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/user_password"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/edit"
