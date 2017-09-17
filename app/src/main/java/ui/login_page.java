@@ -23,6 +23,7 @@ public class login_page extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
+
         txt_zhuce= (TextView) findViewById(R.id.zhuce);
         txt_zhuce.setClickable(true);
         txt_zhuce.setOnClickListener(new View.OnClickListener() {
