@@ -46,7 +46,7 @@ public class login_zhuce extends Activity{
     private int TIME = 60;
     private Button btn_send,btn_end;
     private LinearLayout line1,line2,line3,line3_2;
-    private int detect;
+    private int detect=1;
     private EditText edit_send,edit_valida,edit_pswd,edit_pswd_2;
 
     private TextView text_1,text_2,text_3,text_sphone;
@@ -73,37 +73,12 @@ public class login_zhuce extends Activity{
             if (result == SMSSDK.RESULT_COMPLETE) {
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                     toast("验证成功");
-
-                    String user_password=edit_pswd.getText().toString();
-                    String pawd2=edit_pswd_2.getText().toString();
-
-                    if(user_password.equals("")||pawd2.equals("")){
-                        toast("请输入完整");
-                    }else{
-                        if(user_password==pawd2){
-                            User_information p2 = new User_information();
-                            p2.setName(phone);
-                            p2.setPassword(user_password);
-                            p2.save(new SaveListener<String>() {
-                                @Override
-                                public void done(String s, BmobException e) {
-                                    if(e==null){
-                                        toast("注册成功");
-                                    }else{
-                                        toast("失败");
-                                    }
-                                }
-                            });
-                        }
-                    }
-
                 }else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){       //获取验证码成功
                     toast("获取验证码成功");
                 }else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){//如果你调用了获取国家区号类表会在这里回调
                     //返回支持发送验证码的国家列表
                 }
-            }else if(result==SMSSDK.RESULT_ERROR){
-                toast("验证码错误");
+
             }
             else{//错误等在这里（包括验证失败）
                 //错误码请参照http://wiki.mob.com/android-api-错误码参考/这里我就不再继续写了
@@ -170,12 +145,34 @@ public class login_zhuce extends Activity{
                 if (!TextUtils.isEmpty(code)) {//判断验证码是否为空
                     //验证
                     SMSSDK.submitVerificationCode( country,  phone,  code);
+                    String user_password=edit_pswd.getText().toString();
+                    String pawd2=edit_pswd_2.getText().toString();
+
+                    if(user_password.equals("")||pawd2.equals("")){
+                        toast("请输入完整");
+                    }else{
+                        if(user_password==pawd2){
+                            User_information p2 = new User_information();
+                            p2.setName(phone);
+                            p2.setPassword(user_password);
+                            p2.save(new SaveListener<String>() {
+                                @Override
+                                public void done(String s, BmobException e) {
+                                    if(e==null){
+                                        toast("注册成功");
+                                    }else{
+                                        toast("失败");
+                                    }
+                                }
+                            });
+                        }
+                    }
+
                 }else{//如果用户输入的内容为空，提醒用户
                     toast("请输入验证码后再提交");
                 }
 
                 if(detect==1) {
-
 
 
                 }
