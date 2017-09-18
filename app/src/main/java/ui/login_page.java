@@ -1,13 +1,10 @@
 package ui;
 
 import android.app.Activity;
-import android.app.DownloadManager;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +21,6 @@ import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import fragment.Fragment_mine;
 
 
 /**
@@ -53,7 +49,7 @@ public class login_page extends Activity{
     }
 
     //private void getInformation(final String username, String password){
-        //String sql="select user_name from User_information where user_name=? and user_password=?";
+    //String sql="select user_name from User_information where user_name=? and user_password=?";
         /*BmobQuery<User_information> bmobQuery=new BmobQuery<User_information>();
         bmobQuery.doSQLQuery(sql,new SQLQueryListener<User_information>() {
             @Override
@@ -90,8 +86,8 @@ public class login_page extends Activity{
         btn_sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 final String usernm=username.getText().toString();
-                 final String userpwd=password.getText().toString();
+                final String usernm=username.getText().toString();
+                final String userpwd=password.getText().toString();
                 if(usernm.equals("")||userpwd.equals("")){
                     Toast.makeText(mcontext, "帐号或密码不能为空", Toast.LENGTH_LONG).show();
                     return;
@@ -104,22 +100,13 @@ public class login_page extends Activity{
                     public void done(List<User_information> list, BmobException e) {
                         if(e==null){
 
-                            toast("45");
                             String gname=list.get(0).getName().toString();
                             String gpassword=list.get(0).getPassword().toString();
-
-
-                            String name=username.getText().toString();
-                            String pswd=password.getText().toString();
                             Toast.makeText(mcontext, gname, Toast.LENGTH_LONG).show();
                             if(gname.equals(usernm)&&gpassword.equals(userpwd))
                             {
-                                Intent seccess = new Intent();
-                                seccess.setClass(mcontext, Fragment_mine.class);
-                                startActivity(seccess);
+                               toast("登录成功");
                             }
-
-
                         }
                         else{
                             Toast.makeText(mcontext, "帐号或密码有误", Toast.LENGTH_LONG).show();
@@ -176,7 +163,7 @@ public class login_page extends Activity{
 
             }
         });*/
-        }
+    }
 
 
 

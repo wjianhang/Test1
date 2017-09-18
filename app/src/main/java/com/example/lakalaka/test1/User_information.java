@@ -1,10 +1,6 @@
 package com.example.lakalaka.test1;
 
 import cn.bmob.v3.BmobObject;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.listener.QueryListener;
-
-import static cn.smssdk.utils.a.e;
 
 /**
  * Created by lu17852172914 on 2017/9/15.
@@ -25,6 +21,7 @@ public class User_information extends BmobObject {
     public void setPassword(String password) {
         this.user_password = password;
     }
+
 
 
 

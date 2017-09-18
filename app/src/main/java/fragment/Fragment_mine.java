@@ -32,7 +32,6 @@ public class Fragment_mine extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mine, container, false);
-
         mcontext = this.getContext();
 
         //mob 注册  第三方

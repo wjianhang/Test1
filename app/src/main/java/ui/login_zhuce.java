@@ -1,6 +1,7 @@
 package ui;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -17,12 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lakalaka.test1.R;
+import com.example.lakalaka.test1.User_information;
 
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
@@ -31,61 +36,76 @@ import cn.smssdk.SMSSDK;
  *
  */
 
-public class login_zhuce extends Activity implements View.OnClickListener{
+public class login_zhuce extends Activity{
+    private ProgressDialog mPd;
     private TimerTask tt;
     private Timer tm;
-    private Button btn_send;
-    private Button btn_next;
-    private Button btn_end;
-    private Button btn_again;
-
-    private LinearLayout line1;
-    private LinearLayout line2;
-    private LinearLayout line3;
-    private LinearLayout line3_2;
-
-    private EditText edit_send;
-    private EditText edit_valida;
-    private EditText edit_pswd;
-    private EditText edit_pswd_2;
-
-    private TextView text_1;
-    private TextView text_2;
-    private TextView text_3;
-
-    private Context mcontext;
-    private int TIME = 10;//倒计时60s这里应该多设置些因为mob后台需要60s,我们前端会有差异的建议设置90，100或者120
-    public String country="86";//这是中国区号，如果需要其他国家列表，可以使用getSupportedCountries();获得国家区号
     private String phone;
-    private static final int CODE_REPEAT = 1; //重新发送
+    public String country="86";
+    private  int CODE_REPEAT = 1;
+    private int TIME = 60;
+    private Button btn_send,btn_end;
+    private LinearLayout line1,line2,line3,line3_2;
+    private int detect;
+    private EditText edit_send,edit_valida,edit_pswd,edit_pswd_2;
+
+    private TextView text_1,text_2,text_3,text_sphone;
+    private Context mcontext;
+
     Handler hd = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == CODE_REPEAT) {
-                btn_again.setEnabled(true);
-                btn_next.setEnabled(true);
+                btn_send.setEnabled(true);
                 tm.cancel();//取消任务
                 tt.cancel();//取消任务
-                TIME = 10;//时间重置
-                btn_again.setText("重新获取");
+                TIME = 60;//时间重置
+                btn_send.setText("重新获取");
             }else {
-                btn_again.setText(TIME + "重新获取");
+                btn_send.setText(TIME + "重新获取");
             }
         }
     };
-    //回调
+
     EventHandler eh=new EventHandler(){
         @Override
         public void afterEvent(int event, int result, Object data) {
             if (result == SMSSDK.RESULT_COMPLETE) {
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                     toast("验证成功");
+
+                    String user_password=edit_pswd.getText().toString();
+                    String pawd2=edit_pswd_2.getText().toString();
+
+                    if(user_password.equals("")||pawd2.equals("")){
+                        toast("请输入完整");
+                    }else{
+                        if(user_password==pawd2){
+                            User_information p2 = new User_information();
+                            p2.setName(phone);
+                            p2.setPassword(user_password);
+                            p2.save(new SaveListener<String>() {
+                                @Override
+                                public void done(String s, BmobException e) {
+                                    if(e==null){
+                                        toast("注册成功");
+                                    }else{
+                                        toast("失败");
+                                    }
+                                }
+                            });
+                        }
+                    }
+
                 }else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){       //获取验证码成功
                     toast("获取验证码成功");
                 }else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){//如果你调用了获取国家区号类表会在这里回调
                     //返回支持发送验证码的国家列表
                 }
-            }else{//错误等在这里（包括验证失败）
+            }else if(result==SMSSDK.RESULT_ERROR){
+                toast("验证码错误");
+            }
+            else{//错误等在这里（包括验证失败）
                 //错误码请参照http://wiki.mob.com/android-api-错误码参考/这里我就不再继续写了
                 ((Throwable)data).printStackTrace();
                 String str = data.toString();
@@ -104,50 +124,27 @@ public class login_zhuce extends Activity implements View.OnClickListener{
     }
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zhuce1);
-        text_1= (TextView) findViewById(R.id.text_1);
-        text_2= (TextView) findViewById(R.id.text_2);
-        text_3= (TextView) findViewById(R.id.text_3);
+        Bmob.initialize(this,"82a542cbad55f514667a516a51da7045");
         btn_send= (Button) findViewById(R.id.btn_send);
-        btn_next= (Button) findViewById(R.id.btn_next);
-        btn_again= (Button) findViewById(R.id.btn_again);
         btn_end= (Button) findViewById(R.id.btn_end);
-        line1= (LinearLayout) findViewById(R.id.line_first);
-        line2= (LinearLayout) findViewById(R.id.line_second);
-        line3= (LinearLayout) findViewById(R.id.line_third);
-        line3_2= (LinearLayout) findViewById(R.id.line_third_2);
         edit_send= (EditText) findViewById(R.id.edt_send);
         edit_pswd= (EditText) findViewById(R.id.edit_pswd);
         edit_valida= (EditText) findViewById(R.id.edit_valida);
         edit_pswd_2= (EditText) findViewById(R.id.edit_pswd_2);
-        showLine( View.VISIBLE,View.GONE, View.GONE);
-         textColor(R.color.tomato,R.color.gray,R.color.gray);
-
-
-
-
-        SMSSDK.registerEventHandler(eh); //注册短信回调（记得销毁，避免泄露内存）
-
-
         mcontext=this;
-        initView();
-    }
-    private void initView() {
-        btn_send.setOnClickListener(this);
-
-    }
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_send:
+        SMSSDK.registerEventHandler(eh); //注册短信回调（记得销毁，避免泄露内存）
+       // btn_end.setEnabled(true);
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 phone = edit_send.getText().toString().trim().replaceAll("/s","");
                 if (!TextUtils.isEmpty(phone)) {
                     //定义需要匹配的正则表达式的规则
-                    String REGEX_MOBILE_SIMPLE = "[1][3578]\\d{9}";
+                    String REGEX_MOBILE_SIMPLE =  "[1][3578]\\d{9}";
                     //把正则表达式的规则编译成模板
                     Pattern pattern = Pattern.compile(REGEX_MOBILE_SIMPLE);
                     //把需要匹配的字符给模板匹配，获得匹配器
@@ -161,14 +158,34 @@ public class login_zhuce extends Activity implements View.OnClickListener{
                 } else {
                     toast("请先输入手机号");
                 }
-                break;
-        }
 
+
+            }
+        });
+        btn_end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //获得用户输入的验证码
+                String code = edit_valida.getText().toString().replaceAll("/s","");
+                if (!TextUtils.isEmpty(code)) {//判断验证码是否为空
+                    //验证
+                    SMSSDK.submitVerificationCode( country,  phone,  code);
+                }else{//如果用户输入的内容为空，提醒用户
+                    toast("请输入验证码后再提交");
+                }
+
+                if(detect==1) {
+
+
+
+                }
+
+        }});
 
     }
     private void alterWarning() {
         // 2. 通过sdk发送短信验证
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);  //先得到构造器
+        AlertDialog.Builder builder = new AlertDialog.Builder(mcontext);  //先得到构造器
         builder.setTitle("提示"); //设置标题
         builder.setMessage("我们将要发送到" + phone + "验证"); //设置内容
         builder.setIcon(R.mipmap.ic_launcher);//设置图标，图片id即可
@@ -180,9 +197,8 @@ public class login_zhuce extends Activity implements View.OnClickListener{
                 // 2. 通过sdk发送短信验证（请求获取短信验证码，在监听（eh）中返回）
                 SMSSDK.getVerificationCode(country, phone);
                 //做倒计时操作
-                Toast.makeText(mcontext, "已发送", Toast.LENGTH_SHORT).show();
-                btn_again.setEnabled(false);
-                btn_next.setEnabled(true);
+                Toast.makeText(mcontext, "已发送" + which, Toast.LENGTH_SHORT).show();
+//                btn_send.setEnabled(false);
                 tm = new Timer();
                 tt = new TimerTask() {
                     @Override
@@ -191,8 +207,6 @@ public class login_zhuce extends Activity implements View.OnClickListener{
                     }
                 };
                 tm.schedule(tt,0,1000);
-                showLine(View.GONE,View.VISIBLE,View.GONE);
-                textColor(R.color.gray,R.color.tomato,R.color.gray);
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() { //设置取消按钮
@@ -206,41 +220,7 @@ public class login_zhuce extends Activity implements View.OnClickListener{
         builder.create().show();
     }
 
-
-    /**
-     * 设置控件布局显隐
-     * @param first
-     * @param second
-     * @param third
-     */
-    private void showLine(int first,int second,int third){
-
-        line1.setVisibility(first);
-        edit_send.setVisibility(first);
-        btn_send.setVisibility(first);
-        line2.setVisibility(second);
-        edit_valida.setVisibility(second);
-        btn_next.setVisibility(second);
-        btn_again.setVisibility(second);
-        line3.setVisibility(third);
-        line3_2.setVisibility(third);
-        edit_pswd.setVisibility(third);
-        edit_pswd_2.setVisibility(third);
-        btn_end.setVisibility(third);
-    }
-    /**
-     * 文字颜色改变
-     * @param color1
-     * @param color2
-     * @param color3
-     */
-    private void textColor(int color1,int color2,int color3){
-
-        text_1.setTextColor(getResources().getColor(color1));
-        text_2.setTextColor(getResources().getColor(color2));
-        text_3.setTextColor(getResources().getColor(color3));
-    }
-
-
 }
+
+
 
