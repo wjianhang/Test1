@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lakalaka.test1.R;
+import com.example.lakalaka.test1.StatusBarCompat;
 import com.example.lakalaka.test1.User_information;
 
 import java.util.Timer;
@@ -46,7 +47,7 @@ public class login_zhuce extends Activity{
     private int TIME = 60;
     private Button btn_send,btn_end;
     private LinearLayout line1,line2,line3,line3_2;
-    private int detect=1;
+    private int detect;
     private EditText edit_send,edit_valida,edit_pswd,edit_pswd_2;
 
     private TextView text_1,text_2,text_3,text_sphone;
@@ -72,7 +73,35 @@ public class login_zhuce extends Activity{
         public void afterEvent(int event, int result, Object data) {
             if (result == SMSSDK.RESULT_COMPLETE) {
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
-                    toast("验证成功");
+
+                        String user_password=edit_pswd.getText().toString();
+                        String pawd2=edit_pswd_2.getText().toString();
+                        if(user_password.equals("")||pawd2.equals("")){
+                            toast("请输入完整");
+                            return;
+                        }else{
+                            if(user_password.equals(pawd2)){
+                                User_information p2 = new User_information();
+                                p2.setName(phone);
+                                p2.setPassword(user_password);
+                                p2.save(new SaveListener<String>() {
+                                    @Override
+                                    public void done(String s, BmobException e) {
+                                        if(e==null){
+                                            toast("注册成功");
+                                        }else{
+                                            toast("失败");
+                                        }
+                                    }
+                                });
+                            }else{
+                                toast("密码不一致,请重新输入");
+                            }
+                        }
+
+
+
+
                 }else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){       //获取验证码成功
                     toast("获取验证码成功");
                 }else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){//如果你调用了获取国家区号类表会在这里回调
@@ -104,6 +133,9 @@ public class login_zhuce extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.zhuce1);
         Bmob.initialize(this,"82a542cbad55f514667a516a51da7045");
+        StatusBarCompat.compat(this, 0xFFFF6347);  //沉浸状态栏
+
+
         btn_send= (Button) findViewById(R.id.btn_send);
         btn_end= (Button) findViewById(R.id.btn_end);
         edit_send= (EditText) findViewById(R.id.edt_send);
@@ -145,37 +177,14 @@ public class login_zhuce extends Activity{
                 if (!TextUtils.isEmpty(code)) {//判断验证码是否为空
                     //验证
                     SMSSDK.submitVerificationCode( country,  phone,  code);
-                    String user_password=edit_pswd.getText().toString();
-                    String pawd2=edit_pswd_2.getText().toString();
 
-                    if(user_password.equals("")||pawd2.equals("")){
-                        toast("请输入完整");
-                    }else{
-                        if(user_password==pawd2){
-                            User_information p2 = new User_information();
-                            p2.setName(phone);
-                            p2.setPassword(user_password);
-                            p2.save(new SaveListener<String>() {
-                                @Override
-                                public void done(String s, BmobException e) {
-                                    if(e==null){
-                                        toast("注册成功");
-                                    }else{
-                                        toast("失败");
-                                    }
-                                }
-                            });
-                        }
-                    }
+
 
                 }else{//如果用户输入的内容为空，提醒用户
                     toast("请输入验证码后再提交");
                 }
 
-                if(detect==1) {
 
-
-                }
 
         }});
 
@@ -195,7 +204,7 @@ public class login_zhuce extends Activity{
                 SMSSDK.getVerificationCode(country, phone);
                 //做倒计时操作
                 Toast.makeText(mcontext, "已发送" + which, Toast.LENGTH_SHORT).show();
-//                btn_send.setEnabled(false);
+                btn_send.setEnabled(false);
                 tm = new Timer();
                 tt = new TimerTask() {
                     @Override

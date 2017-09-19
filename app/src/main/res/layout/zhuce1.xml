@@ -106,6 +106,7 @@
             android:textColor="@color/tomato" />
 
         <EditText
+            android:inputType="textPassword"
             android:id="@+id/edit_pswd"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -135,6 +136,7 @@
             android:textColor="@color/tomato" />
 
         <EditText
+            android:inputType="textPassword"
             android:id="@+id/edit_pswd_2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
