@@ -203,7 +203,7 @@ public class login_zhuce extends Activity{
                 // 2. 通过sdk发送短信验证（请求获取短信验证码，在监听（eh）中返回）
                 SMSSDK.getVerificationCode(country, phone);
                 //做倒计时操作
-                Toast.makeText(mcontext, "已发送" + which, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mcontext, "已发送", Toast.LENGTH_SHORT).show();
                 btn_send.setEnabled(false);
                 tm = new Timer();
                 tt = new TimerTask() {

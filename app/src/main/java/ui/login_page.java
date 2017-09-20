@@ -106,9 +106,7 @@ public class login_page extends Activity{
                             String gpassword=list.get(0).getPassword().toString();
                             if(gname.equals(usernm)&&gpassword.equals(userpwd))
                             {
-                                Intent seccess = new Intent();
-                                seccess.setClass(mcontext, login_zhuce.class);
-                                startActivity(seccess);
+                                toast("登陆成功");
                             }
                         }
                         else{
