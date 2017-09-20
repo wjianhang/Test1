@@ -43,6 +43,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="注册测试"/>
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/btn_test3"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_selector"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文本输入测试"/>
 
 
     </LinearLayout>

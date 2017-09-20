@@ -49,26 +49,6 @@ public class login_page extends Activity{
         });
     }
 
-    //private void getInformation(final String username, String password){
-        //String sql="select user_name from User_information where user_name=? and user_password=?";
-        /*BmobQuery<User_information> bmobQuery=new BmobQuery<User_information>();
-        bmobQuery.doSQLQuery(sql,new SQLQueryListener<User_information>() {
-            @Override
-            public void done(BmobQueryResult<User_information> bmobQueryResult, BmobException e) {
-                    if (e==null){
-
-                        Toast.makeText(login_page.this,"登陆成功",Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(login_page.this,"登陆失败"+e.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-            }
-        },username,password);*/
-
-
-
-
-
 
     //}
 
@@ -117,28 +97,6 @@ public class login_page extends Activity{
 
                     }
 
-                    /*@Override
-                    public void done(List<user> arg0, BmobException e) {
-                        // TODO Auto-generated method stub
-                        if(e==null){
-                            String gname=arg0.get(0).getName().toString();
-                            String gpassword=arg0.get(0).getPassword().toString();
-                            String name=mname.getText().toString();
-                            String password=mpassword.getText().toString();
-                            Toast.makeText(SecondActivity.this, gname, Toast.LENGTH_LONG).show();
-                            if(gname.equals(name)&&gpassword.equals(password))
-                            {
-                                Intent seccess = new Intent();
-                                seccess.setClass(SecondActivity.this, ThridActivity.class);
-                                startActivity(seccess);
-                            }
-
-                        }
-                        else{
-                            Toast.makeText(SecondActivity.this, "帐号或密码有误", Toast.LENGTH_LONG).show();
-                        }
-
-                    }*/
                 });
 
 
@@ -159,15 +117,7 @@ public class login_page extends Activity{
 
         });
 
-       /* btn_login= (Button) findViewById(R.id.btn_login);
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
         }
-
 
 
 

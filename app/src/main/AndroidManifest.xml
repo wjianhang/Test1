@@ -32,35 +32,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-    <activity android:name=".MainActivity" android:windowSoftInputMode="adjustPan">
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustPan">
 
 
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity android:name="ui.login_page">
-
-    </activity>
-       <activity android:name="ui.login_zhuce">
-
-       </activity>
-        <activity android:name="ui.login_zhuce2">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name="ui.login_zhuce3">
-     </activity>
+        <activity android:name="ui.login_page"></activity>
+        <activity android:name="ui.login_zhuce"></activity>
+        <activity android:name="ui.login_zhuce2"></activity>
+        <activity android:name=".user_info"></activity>
         <!--mob注册-->
         <activity
             android:name="com.mob.tools.MobUIShell"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <!-- 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data -->
-        <meta-data android:name="Mob-AppKey" android:value="20f6b06113a41"/>
-        <meta-data android:name="Mob-AppSecret" android:value="040d87b5d86ec506883d8933a8d3ca7c"/>
-</application>
+        <meta-data
+            android:name="Mob-AppKey"
+            android:value="20f6b06113a41" />
+        <meta-data
+            android:name="Mob-AppSecret"
+            android:value="040d87b5d86ec506883d8933a8d3ca7c" />
+    </application>
 
 
 </manifest>
