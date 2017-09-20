@@ -58,12 +58,13 @@ public class login_zhuce extends Activity{
         public void handleMessage(Message msg) {
             if (msg.what == CODE_REPEAT) {
                 btn_send.setEnabled(true);
+                btn_send.setBackgroundResource(R.drawable.btn_selector);
                 tm.cancel();//取消任务
                 tt.cancel();//取消任务
                 TIME = 60;//时间重置
                 btn_send.setText("重新获取");
             }else {
-                btn_send.setText(TIME + "重新获取");
+                btn_send.setText(TIME + "后重新获取");
             }
         }
     };
@@ -98,10 +99,6 @@ public class login_zhuce extends Activity{
                                 toast("密码不一致,请重新输入");
                             }
                         }
-
-
-
-
                 }else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){       //获取验证码成功
                     toast("获取验证码成功");
                 }else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){//如果你调用了获取国家区号类表会在这里回调
@@ -126,8 +123,6 @@ public class login_zhuce extends Activity{
             }
         });
     }
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -192,6 +187,7 @@ public class login_zhuce extends Activity{
     private void alterWarning() {
         // 2. 通过sdk发送短信验证
         AlertDialog.Builder builder = new AlertDialog.Builder(mcontext);  //先得到构造器
+
         builder.setTitle("提示"); //设置标题
         builder.setMessage("我们将要发送到" + phone + "验证"); //设置内容
         builder.setIcon(R.mipmap.ic_launcher);//设置图标，图片id即可
@@ -205,6 +201,7 @@ public class login_zhuce extends Activity{
                 //做倒计时操作
                 Toast.makeText(mcontext, "已发送", Toast.LENGTH_SHORT).show();
                 btn_send.setEnabled(false);
+                btn_send.setBackgroundResource(R.color.gray);
                 tm = new Timer();
                 tt = new TimerTask() {
                     @Override
@@ -219,11 +216,18 @@ public class login_zhuce extends Activity{
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-                Toast.makeText(mcontext, "已取消" + which, Toast.LENGTH_SHORT).show();
+                toast("已取消");
             }
         });
         //参数都设置完成了，创建并显示出来
         builder.create().show();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 注销回调接口registerEventHandler必须和unregisterEventHandler配套使用，否则可能造成内存泄漏。
+        SMSSDK.unregisterEventHandler(eh);
+
     }
 
 }

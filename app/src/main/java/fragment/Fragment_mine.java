@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.lakalaka.test1.R;
+import com.example.lakalaka.test1.user_info;
 
 import ui.login_page;
 import ui.login_zhuce;
@@ -23,9 +24,8 @@ import ui.login_zhuce;
 
 public class Fragment_mine extends Fragment {
 
-
     private Button btn_login;
-    private Button test22;
+    private Button test22,test33;
     private Context mcontext;
 
     @Nullable
@@ -51,6 +51,14 @@ public class Fragment_mine extends Fragment {
             public void onClick(View v) {
                 Intent j=new Intent(mcontext, login_zhuce.class);
                 startActivity(j);
+            }
+        });
+        test33= (Button) view.findViewById(R.id.btn_test3);
+        test33.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent x=new Intent(mcontext, user_info.class);
+                startActivity(x);
             }
         });
 
