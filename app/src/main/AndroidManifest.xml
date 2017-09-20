@@ -49,7 +49,12 @@
         <activity android:name="ui.login_zhuce2">
 
         </activity>
+        <activity android:name="ui.login_after">
 
+        </activity>
+        <activity android:name=".user_info">
+
+        </activity>
         <!--mob注册-->
         <activity
             android:name="com.mob.tools.MobUIShell"

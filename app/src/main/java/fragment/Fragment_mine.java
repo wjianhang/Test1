@@ -25,7 +25,7 @@ import ui.login_zhuce;
 public class Fragment_mine extends Fragment {
 
     private Button btn_login;
-    private Button test22,test33;
+    private Button btn_zhuce;
     private Context mcontext;
 
     @Nullable
@@ -45,20 +45,12 @@ public class Fragment_mine extends Fragment {
 
             }
         });
-        test22= (Button) view.findViewById(R.id.btn_test2);
-        test22.setOnClickListener(new View.OnClickListener() {
+        btn_zhuce= (Button) view.findViewById(R.id.btn_zhuce);
+        btn_zhuce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent j=new Intent(mcontext, login_zhuce.class);
+                Intent j=new Intent(mcontext,login_zhuce.class);
                 startActivity(j);
-            }
-        });
-        test33= (Button) view.findViewById(R.id.btn_test3);
-        test33.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent x=new Intent(mcontext, user_info.class);
-                startActivity(x);
             }
         });
 

@@ -88,6 +88,8 @@ public class login_page extends Activity{
                             if(gname.equals(usernm)&&gpassword.equals(userpwd))
                             {
                                 toast("登陆成功");
+                                Intent i=new Intent(mcontext,login_after.class);
+                                startActivity(i);
                             }
                         }
                         else{
