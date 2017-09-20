@@ -90,6 +90,7 @@
                     android:textColor="@color/tomato" />
 
                 <TextView
+                    android:id="@+id/text_user"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/img1"
@@ -123,6 +124,7 @@
                 android:layout_height="match_parent" />
 
                 <TextView
+                    android:id="@+id/text_nname"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/img2"
@@ -155,6 +157,7 @@
                 android:layout_height="match_parent" />
 
                 <TextView
+                    android:id="@+id/text_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/img3"
@@ -180,9 +183,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:text="个性签名"
@@ -190,6 +190,7 @@
                 android:layout_height="match_parent" />
 
                 <TextView
+                    android:id="@+id/text_autograph"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@+id/img4"
@@ -205,6 +206,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/line_weibo"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="2dp"
